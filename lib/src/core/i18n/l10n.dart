@@ -139,6 +139,16 @@ class I18n {
       args: [],
     );
   }
+
+  /// `This app is built for learning purposes only.`
+  String get developerNotice {
+    return Intl.message(
+      'This app is built for learning purposes only.',
+      name: 'developerNotice',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I18n> {

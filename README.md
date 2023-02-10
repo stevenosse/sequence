@@ -6,11 +6,10 @@ Music Recognition app using https://audd.io
 
 🏗️ Construction is underway, please come back later
 
-### App Demo:
+#### App Demo:
 ![Application Demo](demo.mp4)
 
 ## TODO
-- Error handling
 - Documentation
 - CI Setup
 - Write tests

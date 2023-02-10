@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "developerNotice": MessageLookupByLibrary.simpleMessage(
+            "This app is built for learning purposes only."),
         "musicDetails_appleMusicButtonlabel":
             MessageLookupByLibrary.simpleMessage("Open in Apple Music"),
         "musicDetails_spotifyButtonlabel":

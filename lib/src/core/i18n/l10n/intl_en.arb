@@ -10,5 +10,7 @@
   "musicRecognition_loadingLabel": "Looking for matches...",
 
   "musicDetails_spotifyButtonlabel": "Open in spotify",
-  "musicDetails_appleMusicButtonlabel": "Open in Apple Music"
+  "musicDetails_appleMusicButtonlabel": "Open in Apple Music",
+
+  "developerNotice": "This app is built for learning purposes only."
 }

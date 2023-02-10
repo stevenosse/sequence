@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sequence/src/core/i18n/l10n.dart';
 import 'package:sequence/src/core/routing/app_router.dart';
+import 'package:sequence/src/core/theme/dimens.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_cubit.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_state.dart';
 import 'package:sequence/src/features/music_recognition/logic/sample_recorder/sample_recorder_cubit.dart';
@@ -77,10 +78,11 @@ class _MusicRecognitionScreenState extends State<MusicRecognitionScreen> {
           builder: (context, state) {
             return SizedBox(
               width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const Spacer(),
                   AnimatedCrossFade(
                     firstChild: const _RecordView(),
                     secondChild: const _RecognitionStatus(),
@@ -92,6 +94,15 @@ class _MusicRecognitionScreenState extends State<MusicRecognitionScreen> {
                     excludeBottomFocus: false,
                     sizeCurve: Curves.decelerate,
                   ),
+                  const Spacer(),
+                  Text(
+                    I18n.of(context).developerNotice,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleSmall
+                        ?.copyWith(color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.normal, fontSize: 12.0),
+                  ),
+                  const SizedBox(height: Dimens.doubleSpace),
                 ],
               ),
             );
