@@ -17,10 +17,13 @@ Music Recognition app using <a href="https://audd.io">Audd</a/>'s Music recognit
 
 ## 🚧 Getting Started 🚧
 
-🏗️ Construction is underway,there may be a lot of elements missing in this README
+🏗️ Construction is underway, there may be a lot of elements missing in this README
 
 ### Running the app
 
+Couple steps are required to run this app on your local machine.
+
+First, get an API Token from Audd by following [this link](https://docs.audd.io/).
 #### Step 1
 
 An API Token is required to run the app. This API Token is retrieved from environment variables read throught dart define. You'll need to provide is as well as the api base url:
@@ -86,5 +89,5 @@ lib/
 
 ## TODO
 
-- Finish Documentation
-- Write tests
+- [ ] Finish Documentation
+- [ ] Add Widget tests
