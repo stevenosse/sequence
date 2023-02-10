@@ -36,7 +36,7 @@ $ flutter pub run build_runner build --delete-conflicting-outputs
 
 ### App Demo:
 
-![Application Demo](demo.mp4)
+![Application Demo](demo.gif)
 
 ## Architecture and Folter Structure
 
