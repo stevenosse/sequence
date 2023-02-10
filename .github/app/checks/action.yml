@@ -1,0 +1,38 @@
+name: App workflow
+description: Basic app checks
+inputs:
+  working_directory:
+    description: Working directory
+    required: false
+    default: "."
+
+  flutter_channel:
+    description: Flutter Channel
+    required: false
+    default: "stable"
+
+  shell:
+    description: "The shell to use for job"
+    required: false
+    default: bash
+
+runs:
+  using: "composite"
+  steps:
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: ${{inputs.flutter_version}}
+        channel: ${{inputs.flutter_channel}}
+        cache: true
+
+    - working-directory: ${{ inputs.working_directory }}
+      shell: ${{ inputs.shell }}
+      run: flutter pub get
+
+    - working-directory: ${{ inputs.working_directory }}
+      shell: ${{ inputs.shell }}
+      run: flutter format --line-length 120 lib
+
+    - working-directory: ${{ inputs.working_directory }}
+      shell: ${{ inputs.shell }}
+      run: flutter analyze lib test

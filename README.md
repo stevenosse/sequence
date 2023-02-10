@@ -2,6 +2,8 @@
 
 Music Recognition app using https://audd.io
 
+[![HitCount](https://hits.dwyl.com/stevenosse/sequence.svg?style=flat)](http://hits.dwyl.com/stevenosse/sequence)
+
 ## 🚧 Getting Started 🚧
 
 🏗️ Construction is underway,there may be a lot of elements missing in this README

@@ -1,0 +1,16 @@
+name: Code validation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v3
+
+      - name: 📑 Format, Analyze and Test
+        uses: ./.github/app/checks
