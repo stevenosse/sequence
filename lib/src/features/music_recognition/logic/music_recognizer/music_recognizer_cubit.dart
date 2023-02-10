@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sequence/src/datasource/models/requests/recognize/recognize_request.dart';
+import 'package:sequence/src/features/music_recognition/enums/recognition_failure_reason.dart';
 import 'package:sequence/src/shared/locator.dart';
 
 import '../../repositories/music_recognition_repository.dart';
@@ -21,16 +22,24 @@ class MusicRecognizerCubit extends Cubit<MusicRecognizerState> {
 
     emit(MusicRecognizerState.recognitionLoading(request: request));
 
-    final response = await _musicRecognitionRepository.recognize(request);
-    response.when(
-      success: (data) {
-        if (data.result != null) {
-          emit(MusicRecognizerState.recognitionSucceeded(request: request, response: data));
-        } else {
-          emit(MusicRecognizerState.recognitionFailed(request: request)); // FIXME: add reason
-        }
-      },
-      error: (error) => emit(MusicRecognizerState.recognitionFailed(request: request)),
-    );
+    // final response = await _musicRecognitionRepository.recognize(request);
+    await Future.delayed(const Duration(seconds: 1));
+    emit(MusicRecognizerState.recognitionFailed(request: request, reason: RecognitionFailureReason.noMatchFound));
+    // response.when(
+    //   success: (data) {
+    //     if (data.result != null) {
+    //       emit(MusicRecognizerState.recognitionSucceeded(request: request, response: data));
+    //     } else {
+    //       emit(MusicRecognizerState.recognitionFailed(
+    //         request: request,
+    //         reason: FailureReason.noMatchFound,
+    //       ));
+    //     }
+    //   },
+    //   error: (error) => emit(MusicRecognizerState.recognitionFailed(
+    //     request: request,
+    //     reason: FailureReason.other,
+    //   )),
+    // );
   }
 }

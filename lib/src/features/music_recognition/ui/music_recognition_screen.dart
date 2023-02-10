@@ -5,10 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sequence/src/core/routing/app_router.dart';
 import 'package:sequence/src/core/theme/dimens.dart';
+import 'package:sequence/src/features/music_recognition/enums/recognition_failure_reason.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_cubit.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_state.dart';
 import 'package:sequence/src/features/music_recognition/logic/sample_recorder/sample_recorder_cubit.dart';
 import 'package:sequence/src/features/music_recognition/logic/sample_recorder/sample_recorder_state.dart';
+import 'package:sequence/src/features/music_recognition/ui/widgets/recognition_failed_view.dart';
 import 'package:sequence/src/features/music_recognition/ui/widgets/record_button.dart';
 import 'package:sequence/src/generated/assets.gen.dart';
 
@@ -56,6 +58,20 @@ class _MusicRecognitionScreenState extends State<MusicRecognitionScreen> {
             state.whenOrNull(
               recordSuccessful: (filePath) {
                 context.read<MusicRecognizerCubit>().recognize(filePath: filePath);
+              },
+              recordFailed: (exception) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: Theme.of(context).colorScheme.error,
+                    content: Text(
+                      'We are unable to record a sample, did you provide microphone access ?',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium
+                          ?.copyWith(color: Theme.of(context).colorScheme.onError),
+                    ),
+                  ),
+                );
               },
             );
           },
@@ -125,61 +141,15 @@ class _RecognitionStatus extends StatelessWidget {
             'Looking for matches...',
             style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
           ),
-          recognitionFailed: (request) {
-            return _RecognitionFailedView(
+          recognitionFailed: (request, reason) {
+            return RecognitionFailedView(
+              reason: reason,
               onRetry: () => context.read<SampleRecorderCubit>().recordSample(),
             );
           },
           orElse: () => const SizedBox(),
         );
       },
-    );
-  }
-}
-
-class _RecognitionFailedView extends StatelessWidget {
-  const _RecognitionFailedView({this.onRetry});
-
-  final VoidCallback? onRetry;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(Dimens.padding),
-      child: Column(
-        children: [
-          Text(
-            'Recognition failed',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
-          ),
-          const SizedBox(height: Dimens.space),
-          Text(
-            'No match found', // TODO: fix this with reason
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
-          ),
-          const SizedBox(height: Dimens.doubleSpace),
-          SizedBox(
-            height: Dimens.buttonHeight,
-            width: MediaQuery.of(context).size.width,
-            child: ElevatedButton(
-              onPressed: onRetry,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.onPrimary,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimens.radius)),
-              ),
-              child: Text(
-                'Try again',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

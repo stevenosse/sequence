@@ -1,0 +1,4 @@
+enum RecognitionFailureReason {
+  noMatchFound,
+  other,
+}

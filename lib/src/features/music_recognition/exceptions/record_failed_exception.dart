@@ -1,0 +1,1 @@
+class RecordFailedException with Exception {}
