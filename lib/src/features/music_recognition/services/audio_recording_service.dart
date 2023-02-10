@@ -9,10 +9,7 @@ class AudioRecordingService {
     // Check and request permission
     if (await _record.hasPermission()) {
       // Start recording
-      await _record.start(
-        encoder: AudioEncoder.aacLc,
-        bitRate: 128000,
-      );
+      await _record.start();
     }
   }
 

@@ -87,5 +87,4 @@ lib/
 ## TODO
 
 - Finish Documentation
-- CI Setup
 - Write tests
