@@ -16,6 +16,5 @@ class Artwork with _$Artwork {
     String? textColor4,
   }) = _Artwork;
 
-  factory Artwork.fromJson(Map<String, dynamic> json) =>
-      _$ArtworkFromJson(json);
+  factory Artwork.fromJson(Map<String, dynamic> json) => _$ArtworkFromJson(json);
 }

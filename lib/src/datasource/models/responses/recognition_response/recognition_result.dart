@@ -20,6 +20,5 @@ class RecognitionResult with _$RecognitionResult {
     SpotifyResult? spotify,
   }) = _RecognitionResult;
 
-  factory RecognitionResult.fromJson(Map<String, dynamic> json) =>
-      _$RecognitionResultFromJson(json);
+  factory RecognitionResult.fromJson(Map<String, dynamic> json) => _$RecognitionResultFromJson(json);
 }

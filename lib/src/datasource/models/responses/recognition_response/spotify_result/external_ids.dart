@@ -9,6 +9,5 @@ class ExternalIds with _$ExternalIds {
     String? isrc,
   }) = _ExternalIds;
 
-  factory ExternalIds.fromJson(Map<String, dynamic> json) =>
-      _$ExternalIdsFromJson(json);
+  factory ExternalIds.fromJson(Map<String, dynamic> json) => _$ExternalIdsFromJson(json);
 }

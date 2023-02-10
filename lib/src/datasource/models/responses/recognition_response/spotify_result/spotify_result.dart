@@ -17,9 +17,7 @@ class SpotifyResult with _$SpotifyResult {
     @JsonKey(name: 'is_playable') bool? isPlayable,
     @JsonKey(name: 'linked_from') String? linkedFrom,
     @Default([]) List<Artist> artists,
-    @JsonKey(name: 'available_markets')
-    @Default([])
-        List<String> availableMarkets,
+    @JsonKey(name: 'available_markets') @Default([]) List<String> availableMarkets,
     @JsonKey(name: 'disc_number') int? discNumber,
     @JsonKey(name: 'duration_ms') int? durationMs,
     bool? explicit,
@@ -32,6 +30,5 @@ class SpotifyResult with _$SpotifyResult {
     required String uri,
   }) = _SpotifyResult;
 
-  factory SpotifyResult.fromJson(Map<String, dynamic> json) =>
-      _$SpotifyResultFromJson(json);
+  factory SpotifyResult.fromJson(Map<String, dynamic> json) => _$SpotifyResultFromJson(json);
 }

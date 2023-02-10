@@ -97,10 +97,8 @@ class _MusicRecognitionScreenState extends State<MusicRecognitionScreen> {
                   const Spacer(),
                   Text(
                     I18n.of(context).developerNotice,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall
-                        ?.copyWith(color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.normal, fontSize: 12.0),
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.normal, fontSize: 12.0),
                   ),
                   const SizedBox(height: Dimens.doubleSpace),
                 ],

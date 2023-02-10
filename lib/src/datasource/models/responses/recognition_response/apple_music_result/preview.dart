@@ -9,6 +9,5 @@ class Preview with _$Preview {
     required String url,
   }) = _Preview;
 
-  factory Preview.fromJson(Map<String, dynamic> json) =>
-      _$PreviewFromJson(json);
+  factory Preview.fromJson(Map<String, dynamic> json) => _$PreviewFromJson(json);
 }

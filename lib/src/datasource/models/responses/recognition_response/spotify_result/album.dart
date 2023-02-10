@@ -16,15 +16,12 @@ class Album with _$Album {
     @JsonKey(name: 'album_type') required String albumType,
     required String id,
     required String uri,
-    @JsonKey(name: 'available_markets')
-    @Default([])
-        List<String> availableMarkets,
+    @JsonKey(name: 'available_markets') @Default([]) List<String> availableMarkets,
     String? href,
     @Default([]) List<Image> images,
     @JsonKey(name: 'external_urls') ExternalUrls? externalUrls,
     @JsonKey(name: 'release_date') required String releaseDate,
-    @JsonKey(name: 'release_date_precision')
-        required String releaseDatePrecision,
+    @JsonKey(name: 'release_date_precision') required String releaseDatePrecision,
   }) = _Album;
 
   factory Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);
