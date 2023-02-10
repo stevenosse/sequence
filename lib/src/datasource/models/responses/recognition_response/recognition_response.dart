@@ -9,7 +9,7 @@ part 'recognition_response.g.dart';
 class RecognitionResponse with _$RecognitionResponse {
   factory RecognitionResponse({
     required String status,
-    RegognitionResult? result,
+    RecognitionResult? result,
   }) = _RecognitionResponse;
 
   factory RecognitionResponse.fromJson(Map<String, dynamic> json) => _$RecognitionResponseFromJson(json);

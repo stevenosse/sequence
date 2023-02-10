@@ -16,10 +16,18 @@ class $AssetsAnimationsGen {
   String get waves => 'assets/animations/waves.json';
 }
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/cover-fallback.jpg
+  AssetGenImage get coverFallback => const AssetGenImage('assets/images/cover-fallback.jpg');
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsAnimationsGen animations = $AssetsAnimationsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage {

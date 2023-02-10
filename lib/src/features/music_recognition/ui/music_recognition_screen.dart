@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sequence/src/core/routing/app_router.dart';
 import 'package:sequence/src/core/theme/dimens.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_cubit.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_state.dart';
@@ -44,19 +45,9 @@ class _MusicRecognitionScreenState extends State<MusicRecognitionScreen> {
       body: BlocListener<MusicRecognizerCubit, MusicRecognizerState>(
         listener: (context, state) {
           state.whenOrNull(
-            recognitionLoading: (request) {
-              // TODO: show loader
-            },
             recognitionSucceeded: (request, response) {
-              // TODO: temporary, navigate to audio details
-              // context.router.push(route)
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text(response.result!.artist), Text(response.result!.title)],
-                ),
-              ));
               context.read<SampleRecorderCubit>().reset();
+              context.router.push(MusicDetailsRoute(recognitionResult: response.result!));
             },
           );
         },

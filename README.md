@@ -6,12 +6,11 @@ Music Recognition app using https://audd.io
 
 🏗️ Construction is underway, please come back later
 
+### App Demo:
+![Application Demo](demo.mp4)
+
 ## TODO
 - Error handling
-- ✨ UI ✨
 - Documentation
 - CI Setup
 - Write tests
-
-UI Inspi
-https://dribbble.com/shots/14784260-Hum-Recognition-App

@@ -16,7 +16,7 @@ class SpotifyResult with _$SpotifyResult {
     @Default(0) int popularity,
     @JsonKey(name: 'is_playable') bool? isPlayable,
     @JsonKey(name: 'linked_from') String? linkedFrom,
-    List<Artist>? artists,
+    @Default([]) List<Artist> artists,
     @JsonKey(name: 'available_markets')
     @Default([])
         List<String> availableMarkets,

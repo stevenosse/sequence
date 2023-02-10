@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hicons/flutter_hicons.dart';
+import 'package:sequence/src/core/i18n/l10n.dart';
 import 'package:sequence/src/core/theme/dimens.dart';
 
 class RecordButton extends StatelessWidget {
@@ -60,7 +61,7 @@ class RecordButton extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(Dimens.padding),
           child: Text(
-            'Tap to start recognition',
+            I18n.of(context).musicRecognition_initialActionIndicatorLabel,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
           ),
@@ -87,7 +88,7 @@ class __WaveState extends State<_Wave> with SingleTickerProviderStateMixin {
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 1500),
     );
     _animation = Tween(begin: 0.0, end: 1.0).animate(_animationController);
 
@@ -109,7 +110,7 @@ class __WaveState extends State<_Wave> with SingleTickerProviderStateMixin {
 
   void _animationListener() {
     if (_animationController.status == AnimationStatus.completed) {
-      Future.delayed(const Duration(seconds: 1)).then((value) {
+      Future.delayed(const Duration(milliseconds: 300)).then((value) {
         _animationController.forward(from: 0.0);
       });
     }
@@ -126,7 +127,7 @@ class __WaveState extends State<_Wave> with SingleTickerProviderStateMixin {
             width: Dimens.recordButtonSize * (_scale + _animation.value),
             height: Dimens.recordButtonSize * (_scale + _animation.value),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onPrimary.withOpacity(.4),
+              color: Theme.of(context).colorScheme.onPrimary.withOpacity(.5),
               shape: BoxShape.circle,
             ),
           ),

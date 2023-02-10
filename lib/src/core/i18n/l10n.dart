@@ -49,6 +49,16 @@ class I18n {
   static I18n? maybeOf(BuildContext context) {
     return Localizations.of<I18n>(context, I18n);
   }
+
+  /// `Tap to start recognition`
+  String get musicRecognition_initialActionIndicatorLabel {
+    return Intl.message(
+      'Tap to start recognition',
+      name: 'musicRecognition_initialActionIndicatorLabel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I18n> {

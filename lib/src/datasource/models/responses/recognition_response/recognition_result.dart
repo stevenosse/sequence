@@ -7,8 +7,8 @@ part 'recognition_result.freezed.dart';
 part 'recognition_result.g.dart';
 
 @freezed
-class RegognitionResult with _$RegognitionResult {
-  factory RegognitionResult({
+class RecognitionResult with _$RecognitionResult {
+  factory RecognitionResult({
     required String artist,
     required String title,
     String? album,
@@ -18,8 +18,8 @@ class RegognitionResult with _$RegognitionResult {
     @JsonKey(name: 'song_link') required String songLink,
     @JsonKey(name: 'apple_music') AppleMusicResult? appleMusic,
     SpotifyResult? spotify,
-  }) = _RegognitionResult;
+  }) = _RecognitionResult;
 
-  factory RegognitionResult.fromJson(Map<String, dynamic> json) =>
-      _$RegognitionResultFromJson(json);
+  factory RecognitionResult.fromJson(Map<String, dynamic> json) =>
+      _$RecognitionResultFromJson(json);
 }

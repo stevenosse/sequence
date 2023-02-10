@@ -4,18 +4,18 @@ import 'package:sequence/src/core/routing/app_router.dart';
 import 'package:sequence/src/core/theme/app_theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+final AppRouter _appRouter = AppRouter();
+
 class Application extends StatelessWidget {
   const Application({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final AppRouter appRouter = AppRouter();
-
     return MaterialApp.router(
       title: 'Sequence',
-      routerDelegate: appRouter.delegate(),
-      routeInformationProvider: appRouter.routeInfoProvider(),
-      routeInformationParser: appRouter.defaultRouteParser(),
+      routerDelegate: _appRouter.delegate(),
+      routeInformationProvider: _appRouter.routeInfoProvider(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
