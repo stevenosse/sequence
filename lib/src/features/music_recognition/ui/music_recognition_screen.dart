@@ -4,8 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sequence/src/core/routing/app_router.dart';
-import 'package:sequence/src/core/theme/dimens.dart';
-import 'package:sequence/src/features/music_recognition/enums/recognition_failure_reason.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_cubit.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_state.dart';
 import 'package:sequence/src/features/music_recognition/logic/sample_recorder/sample_recorder_cubit.dart';

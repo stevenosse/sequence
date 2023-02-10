@@ -37,20 +37,16 @@ class SampleRecorderCubit extends Cubit<SampleRecorderState> {
   }
 
   void _startRecognition() async {
-    emit(SampleRecorderState.recordFailed(
-      exception: RecordFailedException(),
-    ));
+    final path = await _stopSampleRecording();
+    if (path != null) {
+      log('Sample recording ended: path: $path');
+      emit(SampleRecorderState.recordSuccessful(filePath: path));
+    } else {
+      emit(SampleRecorderState.recordFailed(
+        exception: RecordFailedException(),
+      ));
+    }
   }
-  //   final path = await _stopSampleRecording();
-  //   if (path != null) {
-  //     log('Sample recording ended: path: $path');
-  //     emit(SampleRecorderState.recordSuccessful(filePath: path));
-  //   } else {
-  //     emit(SampleRecorderState.recordFailed(
-  //       exception: RecordFailedException(),
-  //     ));
-  //   }
-  // }
 
   @override
   Future<void> close() {

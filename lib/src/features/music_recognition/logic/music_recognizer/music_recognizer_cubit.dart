@@ -22,24 +22,22 @@ class MusicRecognizerCubit extends Cubit<MusicRecognizerState> {
 
     emit(MusicRecognizerState.recognitionLoading(request: request));
 
-    // final response = await _musicRecognitionRepository.recognize(request);
-    await Future.delayed(const Duration(seconds: 1));
-    emit(MusicRecognizerState.recognitionFailed(request: request, reason: RecognitionFailureReason.noMatchFound));
-    // response.when(
-    //   success: (data) {
-    //     if (data.result != null) {
-    //       emit(MusicRecognizerState.recognitionSucceeded(request: request, response: data));
-    //     } else {
-    //       emit(MusicRecognizerState.recognitionFailed(
-    //         request: request,
-    //         reason: FailureReason.noMatchFound,
-    //       ));
-    //     }
-    //   },
-    //   error: (error) => emit(MusicRecognizerState.recognitionFailed(
-    //     request: request,
-    //     reason: FailureReason.other,
-    //   )),
-    // );
+    final response = await _musicRecognitionRepository.recognize(request);
+    response.when(
+      success: (data) {
+        if (data.result != null) {
+          emit(MusicRecognizerState.recognitionSucceeded(request: request, response: data));
+        } else {
+          emit(MusicRecognizerState.recognitionFailed(
+            request: request,
+            reason: RecognitionFailureReason.noMatchFound,
+          ));
+        }
+      },
+      error: (error) => emit(MusicRecognizerState.recognitionFailed(
+        request: request,
+        reason: RecognitionFailureReason.other,
+      )),
+    );
   }
 }

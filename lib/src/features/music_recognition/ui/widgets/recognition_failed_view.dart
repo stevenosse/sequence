@@ -81,7 +81,7 @@ class _RecognitionFailedViewState extends State<RecognitionFailedView> with Sing
                       case RecognitionFailureReason.other:
                         return 'An unexpected error occured. Please try again';
                     }
-                  }(), // TODO: fix this with reason
+                  }(),
                   textAlign: TextAlign.center,
                   style:
                       Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
