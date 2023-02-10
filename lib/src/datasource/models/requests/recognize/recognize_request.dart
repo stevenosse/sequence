@@ -7,6 +7,7 @@ part 'recognize_request.g.dart';
 
 @freezed
 class RecognizeRequest with _$RecognizeRequest {
+  @JsonSerializable(explicitToJson: true)
   factory RecognizeRequest({
     @JsonKey(name: 'return') required String returnOutput,
     required String filePath,

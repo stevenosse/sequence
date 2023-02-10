@@ -8,6 +8,7 @@ part 'recognition_result.g.dart';
 
 @freezed
 class RecognitionResult with _$RecognitionResult {
+  @JsonSerializable(explicitToJson: true)
   factory RecognitionResult({
     required String artist,
     required String title,
