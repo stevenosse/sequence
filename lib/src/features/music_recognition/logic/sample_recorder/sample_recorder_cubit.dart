@@ -23,6 +23,10 @@ class SampleRecorderCubit extends Cubit<SampleRecorderState> {
     _recordTimer = Timer(_sampleDuration, () => _startRecognition());
   }
 
+  void reset() {
+    emit(SampleRecorderState.idle());
+  }
+
   Future<void> _startSampleRecording() async {
     await _audioRecordingService.record();
   }

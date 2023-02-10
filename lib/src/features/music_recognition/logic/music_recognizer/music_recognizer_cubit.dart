@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sequence/src/datasource/models/requests/recognize/recognize_request.dart';
+import 'package:sequence/src/datasource/models/responses/recognition_response/recognition_response.dart';
 import 'package:sequence/src/shared/locator.dart';
 
 import '../../repositories/music_recognition_repository.dart';

@@ -8,4 +8,9 @@ class Dimens {
   static const double halfPadding = 8.0;
   static const double padding = 16.0;
   static const double doublePadding = 16.0;
+
+  static const double radius = 12.0;
+
+  static const double recordButtonSize = 150.0;
+  static const double buttonHeight = 55.0;
 }

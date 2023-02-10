@@ -34,6 +34,7 @@ class AppTheme {
         error: colors.error,
         brightness: brightness,
         onError: colors.onError,
+        shadow: Colors.black,
       ),
     );
   }
