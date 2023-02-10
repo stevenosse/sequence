@@ -1,8 +1,19 @@
 # Sequence
 
-Music Recognition app using https://audd.io
+<p style="text-align: center;">
+Music Recognition app using <a href="https://audd.io">Audd</a/>'s Music recognition API
+</p>
 
-[![HitCount](https://hits.dwyl.com/stevenosse/sequence.svg?style=flat)](http://hits.dwyl.com/stevenosse/sequence)
+<p align="center">
+    <a href="https://github.com/stevenosse/sequence/actions">
+        <img src="https://github.com/stevenosse/sequence/actions/workflows/main.yml/badge.svg" alt="ci" />
+    </a>
+    <a href="http://hits.dwyl.com/stevenosse/sequence"><img src="https://hits.dwyl.com/stevenosse/sequence.svg?style=flat" alt="ci"></a>
+    <a href="https://twitter.com/intent/follow?screen_name=nossesteve">
+        <img src="https://img.shields.io/twitter/follow/nossesteve?style=social&logo=twitter"
+            alt="follow on Twitter"></a>
+</p>
+
 
 ## 🚧 Getting Started 🚧
 
