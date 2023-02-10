@@ -17,7 +17,6 @@ class Application extends StatelessWidget {
       routeInformationProvider: _appRouter.routeInfoProvider(),
       routeInformationParser: _appRouter.defaultRouteParser(),
       theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         I18n.delegate,

@@ -59,6 +59,86 @@ class I18n {
       args: [],
     );
   }
+
+  /// `No match found`
+  String get musicRecognition_failed_noMatch {
+    return Intl.message(
+      'No match found',
+      name: 'musicRecognition_failed_noMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unexpected error occured. Please try again`
+  String get musicRecognition_failed_other {
+    return Intl.message(
+      'An unexpected error occured. Please try again',
+      name: 'musicRecognition_failed_other',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try again`
+  String get musicRecognition_failed_tryAgainButtonLabel {
+    return Intl.message(
+      'Try again',
+      name: 'musicRecognition_failed_tryAgainButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recognition failed`
+  String get musicRecognition_failed_title {
+    return Intl.message(
+      'Recognition failed',
+      name: 'musicRecognition_failed_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are unable to record a sample, did you provide microphone access ?`
+  String get musicRecognition_recordFailed {
+    return Intl.message(
+      'We are unable to record a sample, did you provide microphone access ?',
+      name: 'musicRecognition_recordFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Looking for matches...`
+  String get musicRecognition_loadingLabel {
+    return Intl.message(
+      'Looking for matches...',
+      name: 'musicRecognition_loadingLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open in spotify`
+  String get musicDetails_spotifyButtonlabel {
+    return Intl.message(
+      'Open in spotify',
+      name: 'musicDetails_spotifyButtonlabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open in Apple Music`
+  String get musicDetails_appleMusicButtonlabel {
+    return Intl.message(
+      'Open in Apple Music',
+      name: 'musicDetails_appleMusicButtonlabel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I18n> {

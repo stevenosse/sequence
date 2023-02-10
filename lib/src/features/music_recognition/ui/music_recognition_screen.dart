@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sequence/src/core/i18n/l10n.dart';
 import 'package:sequence/src/core/routing/app_router.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_cubit.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_state.dart';
@@ -62,7 +63,7 @@ class _MusicRecognitionScreenState extends State<MusicRecognitionScreen> {
                   SnackBar(
                     backgroundColor: Theme.of(context).colorScheme.error,
                     content: Text(
-                      'We are unable to record a sample, did you provide microphone access ?',
+                      I18n.of(context).musicRecognition_recordFailed,
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium
@@ -136,7 +137,7 @@ class _RecognitionStatus extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           recognitionLoading: (request) => Text(
-            'Looking for matches...',
+            I18n.of(context).musicRecognition_loadingLabel,
             style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
           ),
           recognitionFailed: (request, reason) {

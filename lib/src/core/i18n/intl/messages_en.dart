@@ -22,7 +22,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "musicDetails_appleMusicButtonlabel":
+            MessageLookupByLibrary.simpleMessage("Open in Apple Music"),
+        "musicDetails_spotifyButtonlabel":
+            MessageLookupByLibrary.simpleMessage("Open in spotify"),
+        "musicRecognition_failed_noMatch":
+            MessageLookupByLibrary.simpleMessage("No match found"),
+        "musicRecognition_failed_other": MessageLookupByLibrary.simpleMessage(
+            "An unexpected error occured. Please try again"),
+        "musicRecognition_failed_title":
+            MessageLookupByLibrary.simpleMessage("Recognition failed"),
+        "musicRecognition_failed_tryAgainButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Try again"),
         "musicRecognition_initialActionIndicatorLabel":
-            MessageLookupByLibrary.simpleMessage("Tap to start recognition")
+            MessageLookupByLibrary.simpleMessage("Tap to start recognition"),
+        "musicRecognition_loadingLabel":
+            MessageLookupByLibrary.simpleMessage("Looking for matches..."),
+        "musicRecognition_recordFailed": MessageLookupByLibrary.simpleMessage(
+            "We are unable to record a sample, did you provide microphone access ?")
       };
 }

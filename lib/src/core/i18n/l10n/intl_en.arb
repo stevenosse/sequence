@@ -1,5 +1,14 @@
 {
   "@@locale": "en",
 
-  "musicRecognition_initialActionIndicatorLabel": "Tap to start recognition"
+  "musicRecognition_initialActionIndicatorLabel": "Tap to start recognition",
+  "musicRecognition_failed_noMatch": "No match found",
+  "musicRecognition_failed_other": "An unexpected error occured. Please try again",
+  "musicRecognition_failed_tryAgainButtonLabel": "Try again",
+  "musicRecognition_failed_title": "Recognition failed",
+  "musicRecognition_recordFailed": "We are unable to record a sample, did you provide microphone access ?",
+  "musicRecognition_loadingLabel": "Looking for matches...",
+
+  "musicDetails_spotifyButtonlabel": "Open in spotify",
+  "musicDetails_appleMusicButtonlabel": "Open in Apple Music"
 }

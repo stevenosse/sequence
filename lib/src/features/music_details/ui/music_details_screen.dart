@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:sequence/src/core/i18n/l10n.dart';
 import 'package:sequence/src/core/theme/dimens.dart';
 
 import 'package:sequence/src/datasource/models/responses/recognition_response/recognition_result.dart';
@@ -78,7 +79,7 @@ class MusicDetailsScreen extends StatelessWidget {
                             final trackUrl = recognitionResult.spotify!.externalUrls?.spotify;
                             if (trackUrl != null) {
                               _openInPlayerService.open(trackUrl);
-                            }  else {
+                            } else {
                               log('Failed to oepn spotify music: url is null');
                             }
                           },
@@ -162,7 +163,7 @@ class _SpotifyButton extends StatelessWidget {
           shape: const StadiumBorder(),
         ),
         icon: Logo(Logos.spotify, size: Dimens.doubleSpace),
-        label: const Text('Open in Spotify'),
+        label: Text(I18n.of(context).musicDetails_spotifyButtonlabel),
       ),
     );
   }
@@ -184,7 +185,7 @@ class _AppleMusicButton extends StatelessWidget {
           shape: const StadiumBorder(),
         ),
         icon: Logo(Logos.apple_music, size: Dimens.doubleSpace),
-        label: const Text('Open in Apple Music'),
+        label: Text(I18n.of(context).musicDetails_appleMusicButtonlabel),
       ),
     );
   }

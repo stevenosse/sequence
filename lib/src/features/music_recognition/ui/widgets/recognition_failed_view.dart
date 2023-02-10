@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:sequence/src/core/i18n/l10n.dart';
 import 'package:sequence/src/core/theme/dimens.dart';
 import 'package:sequence/src/features/music_recognition/enums/recognition_failure_reason.dart';
 
@@ -67,7 +68,7 @@ class _RecognitionFailedViewState extends State<RecognitionFailedView> with Sing
             child: Column(
               children: [
                 Text(
-                  'Recognition failed',
+                  I18n.of(context).musicRecognition_failed_title,
                   textAlign: TextAlign.center,
                   style:
                       Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
@@ -77,9 +78,9 @@ class _RecognitionFailedViewState extends State<RecognitionFailedView> with Sing
                   () {
                     switch (widget.reason) {
                       case RecognitionFailureReason.noMatchFound:
-                        return 'No match found';
+                        return I18n.of(context).musicRecognition_failed_noMatch;
                       case RecognitionFailureReason.other:
-                        return 'An unexpected error occured. Please try again';
+                        return I18n.of(context).musicRecognition_failed_other;
                     }
                   }(),
                   textAlign: TextAlign.center,
@@ -97,7 +98,7 @@ class _RecognitionFailedViewState extends State<RecognitionFailedView> with Sing
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimens.radius)),
                     ),
                     child: Text(
-                      'Try again',
+                      I18n.of(context).musicRecognition_failed_tryAgainButtonLabel,
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium
