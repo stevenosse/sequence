@@ -4,7 +4,6 @@ import 'package:mocktail/mocktail.dart';
 import 'package:sequence/src/datasource/http/exceptions/custom_http_exception.dart';
 import 'package:sequence/src/datasource/models/requests/recognize/recognize_request.dart';
 import 'package:sequence/src/datasource/models/responses/network_response.dart';
-import 'package:sequence/src/datasource/models/responses/recognition_response/recognition_response.dart';
 import 'package:sequence/src/features/music_recognition/enums/recognition_failure_reason.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_cubit.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_state.dart';

@@ -7,11 +7,11 @@ import 'package:sequence/src/features/music_recognition/logic/sample_recorder/sa
 import 'package:sequence/src/features/music_recognition/services/audio_recording_service.dart';
 import 'package:sequence/src/shared/locator.dart';
 
-const Duration _sampleDuration = Duration(seconds: 5);
-
 class SampleRecorderCubit extends Cubit<SampleRecorderState> {
   final AudioRecordingService _audioRecordingService;
   Timer? _recordTimer;
+
+  static const Duration sampleDuration = Duration(seconds: 5);
 
   SampleRecorderCubit({
     AudioRecordingService? audioRecordingService,
@@ -19,9 +19,13 @@ class SampleRecorderCubit extends Cubit<SampleRecorderState> {
         super(SampleRecorderState.idle());
 
   void recordSample() async {
-    await _startSampleRecording();
-    emit(SampleRecorderState.recordPending());
-    _recordTimer = Timer(_sampleDuration, () => _startRecognition());
+    try {
+      await _startSampleRecording();
+      emit(SampleRecorderState.recordPending());
+      _recordTimer = Timer(sampleDuration, () => _stopSampleRecording());
+    } catch (e) {
+      log('Record failed', error: e);
+    }
   }
 
   void reset() {
@@ -32,12 +36,12 @@ class SampleRecorderCubit extends Cubit<SampleRecorderState> {
     await _audioRecordingService.record();
   }
 
-  Future<String?> _stopSampleRecording() async {
+  Future<String?> _getRecordedSample() async {
     return _audioRecordingService.stopRecording();
   }
 
-  void _startRecognition() async {
-    final path = await _stopSampleRecording();
+  void _stopSampleRecording() async {
+    final path = await _getRecordedSample();
     if (path != null) {
       log('Sample recording ended: path: $path');
       emit(SampleRecorderState.recordSuccessful(filePath: path));

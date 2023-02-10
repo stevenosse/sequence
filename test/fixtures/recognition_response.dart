@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/services.dart';
 import 'package:sequence/src/datasource/models/responses/recognition_response/recognition_response.dart';
 
 RecognitionResponse defaultRecognitionResponse = RecognitionResponse.fromJson(
