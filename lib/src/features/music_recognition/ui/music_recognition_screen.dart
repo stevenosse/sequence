@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sequence/generated/assets.gen.dart';
 import 'package:sequence/src/core/i18n/l10n.dart';
 import 'package:sequence/src/core/routing/app_router.dart';
 import 'package:sequence/src/core/theme/dimens.dart';
@@ -12,7 +13,6 @@ import 'package:sequence/src/features/music_recognition/logic/sample_recorder/sa
 import 'package:sequence/src/features/music_recognition/logic/sample_recorder/sample_recorder_state.dart';
 import 'package:sequence/src/features/music_recognition/ui/widgets/recognition_failed_view.dart';
 import 'package:sequence/src/features/music_recognition/ui/widgets/record_button.dart';
-import 'package:sequence/src/generated/assets.gen.dart';
 
 class MusicRecognitionScreen extends StatefulWidget implements AutoRouteWrapper {
   const MusicRecognitionScreen({super.key});

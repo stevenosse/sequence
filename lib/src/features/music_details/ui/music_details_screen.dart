@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:sequence/generated/assets.gen.dart';
 import 'package:sequence/src/core/i18n/l10n.dart';
 import 'package:sequence/src/core/theme/dimens.dart';
 
 import 'package:sequence/src/datasource/models/responses/recognition_response/recognition_result.dart';
 import 'package:sequence/src/features/music_details/services/open_in_player_service.dart';
-import 'package:sequence/src/generated/assets.gen.dart';
 import 'package:sequence/src/shared/locator.dart';
 
 class MusicDetailsScreen extends StatelessWidget {

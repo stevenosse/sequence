@@ -84,7 +84,7 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 
 flutter_gen:
-  output: lib/src/generated/
+  output: lib/generated/
   line_length: 120
 
   fonts:
