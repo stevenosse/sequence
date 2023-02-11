@@ -27,7 +27,7 @@ Music Recognition app using <a href="https://audd.io">Audd</a/>'s Music recognit
     - [Step 1](#step-1)
     - [Step 2](#step-2)
     - [Step 3](#step-3)
-* [Architecture and Folter Structure](#architecture-and-folter-structure)
+* [Architecture and Folder Structure](#architecture-and-folder-structure)
   + [Data layer](#data-layer)
     - [Api Controllers](#api-controllers)
     - [Repositories](#repositories)
@@ -77,7 +77,7 @@ Run code generation:
 $ flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
-## Architecture and Folter Structure
+## Architecture and Folder Structure
 
 This project uses the BLoC Architecture. Learn more on [https://bloclibrary.dev](https://bloclibrary.dev/#/architecture)
 
