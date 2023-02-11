@@ -32,6 +32,15 @@ void main() {
   );
 
   blocTest(
+    'Final state is [idle] when reset is called',
+    build: () => SampleRecorderCubit(audioRecordingService: mockAudioRecordingService),
+    act: (bloc) => bloc.reset(),
+    expect: () => [
+      SampleRecorderState.idle(),
+    ],
+  );
+
+  blocTest(
     'Final state is [recordFailed] when record is launched',
     setUp: () {
       when(() => mockAudioRecordingService.stopRecording()).thenAnswer((_) async => null);
