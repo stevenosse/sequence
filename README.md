@@ -22,7 +22,7 @@ Music Recognition app using <a href="https://audd.io">Audd</a/>'s Music recognit
 
 # Content
 * [🚧 Getting Started 🚧](#---getting-started---)
-  + [App Demo](#app-demo-)
+  + [App Demo:](#app-demo-)
   + [Running the app](#running-the-app)
     - [Step 1](#step-1)
     - [Step 2](#step-2)
@@ -33,8 +33,9 @@ Music Recognition app using <a href="https://audd.io">Audd</a/>'s Music recognit
     - [Repositories](#repositories)
   + [Business logic layer](#business-logic-layer)
     - [Services](#services)
-    - [Presentation layer](#presentation-layer)
-  + [Folder structure](#folder-structure)
+    - [Cubits/BLoCs](#cubits-blocs)
+  + [Presentation layer](#presentation-layer)
+* [Folder structure](#folder-structure)
 * [Testing](#testing)
 * [Tools](#tools)
 
@@ -149,7 +150,11 @@ This layer hosts our blocks, cubits and services.
 >
 > They are used to store any logic that's not related to a UI State
 
-#### Presentation layer
+#### Cubits/BLoCs
+>
+> They are used to store any logic that can result to a UI State change
+
+### Presentation layer
 
 This layer is the one the user interacts with. It renders itself base on one or more BLoC/Cubit's state
 
