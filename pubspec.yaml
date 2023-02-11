@@ -48,6 +48,7 @@ dev_dependencies:
   golden_toolkit: ^0.14.0
   mocktail: ^0.3.0
   bloc_test: ^9.1.1
+  http_mock_adapter: ^0.3.3
 
 dependency_overrides: 
   collection: ^1.17.1

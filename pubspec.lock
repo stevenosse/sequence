@@ -389,6 +389,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.5"
+  http_mock_adapter:
+    dependency: "direct dev"
+    description:
+      name: http_mock_adapter
+      sha256: "6fa1a00932a5758750f54c5594f8bf37393fe5ae86e49325281b5a9d99114f33"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.3"
   http_multi_server:
     dependency: transitive
     description:
