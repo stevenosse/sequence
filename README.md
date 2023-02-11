@@ -8,11 +8,15 @@ Music Recognition app using <a href="https://audd.io">Audd</a/>'s Music recognit
     <a href="https://github.com/stevenosse/sequence/actions">
         <img src="https://github.com/stevenosse/sequence/actions/workflows/main.yml/badge.svg" alt="ci" />
     </a>
-    <a href="http://hits.dwyl.com/stevenosse/sequence"><img src="https://hits.dwyl.com/stevenosse/sequence.svg?style=flat" alt="ci"></a>
+    <a href="https://codecov.io/gh/stevenosse/sequence" > 
+        <img src="https://codecov.io/gh/stevenosse/sequence/branch/main/graph/badge.svg?token=2IOFYOMVYH"/> 
+    </a>
+    <a href="http://hits.dwyl.com/stevenosse/sequence"><img src="https://hits.dwyl.com/stevenosse/sequence.svg?style=flat" alt="ci">
+    </a>
     <a href="https://twitter.com/intent/follow?screen_name=nossesteve">
         <img src="https://img.shields.io/twitter/follow/nossesteve?style=social&logo=twitter"
-            alt="follow on Twitter"></a>
-    <a href="https://coveralls.io/github/stevenosse/sequence?branch=main"><img src="https://coveralls.io/repos/github/stevenosse/sequence/badge.svg?branch=main" alt="Coverage Status" /></a>
+            alt="follow on Twitter">
+    </a>
 
 </p>
 
