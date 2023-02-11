@@ -37,7 +37,7 @@ jobs:
         run: flutter test --coverage
 
   finish:
-    needs: test
+    needs: unit-test
     runs-on: ubuntu-latest
     steps:
     - name: Coveralls Finished
