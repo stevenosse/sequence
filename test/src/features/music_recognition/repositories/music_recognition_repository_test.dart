@@ -46,10 +46,32 @@ void main() {
     );
   });
 
+  test('Returns [NetworkResponse.error] when API call fails with parsing error', () async {
+    // Should throw 'type 'Null' is not a subtype of type 'String' in type cast' because status cannot be null
+    when(() => mockMusicRecognitionApiController.recognize(request: defaultRequest)).thenAnswer(
+      (_) async => Response(requestOptions: RequestOptions(path: '/recognize'), data: {
+        'result': '',
+      }),
+    );
+
+    final NetworkResponse<RecognitionResponse, CustomHttpException> response =
+        await musicRecognitionRepository.recognize(defaultRequest);
+
+    expect(
+      response,
+      equals(NetworkResponse<RecognitionResponse, CustomHttpException>.error(CustomHttpException(
+        code: CustomHttpError.parsing.name,
+        details: 'type \'Null\' is not a subtype of type \'String\' in type cast',
+        errorType: CustomHttpError.parsing,
+      ))),
+    );
+  });
+
   test('Returns [NetworkResponse.success] when API Call succeeds', () async {
     when(() => mockMusicRecognitionApiController.recognize(request: defaultRequest)).thenAnswer(
-      (_) async =>
-          Response(requestOptions: RequestOptions(path: '/recognize'), data: json.decode(File('test_resources/mocks/recognition_response.json').readAsStringSync())),
+      (_) async => Response(
+          requestOptions: RequestOptions(path: '/recognize'),
+          data: json.decode(File('test_resources/mocks/recognition_response.json').readAsStringSync())),
     );
 
     final NetworkResponse<RecognitionResponse, CustomHttpException> response =

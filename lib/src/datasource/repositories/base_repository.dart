@@ -6,18 +6,19 @@ abstract class BaseRepository {
   Future<NetworkResponse<T, CustomHttpException>> runApiCall<T>(
       {required Future<NetworkResponse<T, CustomHttpException>> Function() call}) async {
     try {
-      return await call();
+      final response = await call();
+      return response;
     } on DioError catch (e) {
       return NetworkResponse.error(CustomHttpException(
         code: e.type.name,
         details: e.message,
         errorType: CustomHttpError.http,
       ));
-    } on Exception catch (e) {
+    } catch (e) {
       return NetworkResponse.error(CustomHttpException(
-        code: e.toString(),
+        code: CustomHttpError.parsing.name,
         errorType: CustomHttpError.parsing,
-        details: 'Response',
+        details: e.toString(),
       ));
     }
   }

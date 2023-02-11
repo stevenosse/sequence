@@ -14,9 +14,10 @@ class MusicRecognitionRepository extends BaseRepository {
   }) : _musicRecognitionApiController = musicRecognitionApiController ?? locator<MusicRecognitionApiController>();
 
   Future<NetworkResponse<RecognitionResponse, CustomHttpException>> recognize(RecognizeRequest request) async {
-    return runApiCall(
+    return runApiCall<RecognitionResponse>(
       call: () async {
         final response = await _musicRecognitionApiController.recognize(request: request);
+
         return NetworkResponse.success(RecognitionResponse.fromJson(response.data!));
       },
     );
