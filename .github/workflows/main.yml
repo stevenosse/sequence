@@ -12,5 +12,36 @@ jobs:
       - name: 📚 Git Checkout
         uses: actions/checkout@v3
 
-      - name: 📑 Format, Analyze and Test
+      - name: 📑 Format & Analyze
         uses: ./.github/app/checks
+
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v3
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{inputs.flutter_version}}
+          channel: ${{inputs.flutter_channel}}
+          cache: true
+      
+      - name: 🔄 Get dependencies
+        run: flutter pub get
+
+      - name: 🏗️ Run codegen
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+      
+      - name: 🧪 Run tests
+        run: flutter test --coverage
+
+  finish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel-finished: true

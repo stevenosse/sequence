@@ -12,6 +12,8 @@ Music Recognition app using <a href="https://audd.io">Audd</a/>'s Music recognit
     <a href="https://twitter.com/intent/follow?screen_name=nossesteve">
         <img src="https://img.shields.io/twitter/follow/nossesteve?style=social&logo=twitter"
             alt="follow on Twitter"></a>
+    <a href="https://coveralls.io/github/stevenosse/sequence?branch=main"><img src="https://coveralls.io/repos/github/stevenosse/sequence/badge.svg?branch=main" alt="Coverage Status" /></a>
+
 </p>
 
 
