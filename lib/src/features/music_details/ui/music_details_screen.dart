@@ -16,7 +16,8 @@ class MusicDetailsScreen extends StatelessWidget {
     super.key,
     required this.recognitionResult,
     OpenInPlayerService? openInPlayerService,
-  }) : _openInPlayerService = openInPlayerService ?? locator<OpenInPlayerService>();
+  }) : _openInPlayerService =
+            openInPlayerService ?? locator<OpenInPlayerService>();
 
   final RecognitionResult recognitionResult;
   final OpenInPlayerService _openInPlayerService;
@@ -24,7 +25,8 @@ class MusicDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final songCoverImagePath =
-        recognitionResult.spotify?.album?.images.firstOrNull?.url ?? recognitionResult.appleMusic?.artwork?.url;
+        recognitionResult.spotify?.album?.images.firstOrNull?.url ??
+            recognitionResult.appleMusic?.artwork?.url;
 
     return Scaffold(
       body: SizedBox(
@@ -50,7 +52,9 @@ class MusicDetailsScreen extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .labelMedium
-                              ?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                              ?.copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary),
                         ),
                         if (recognitionResult.album != null) ...[
                           const SizedBox(height: Dimens.halfSpace),
@@ -59,7 +63,10 @@ class MusicDetailsScreen extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .labelSmall
-                                ?.copyWith(color: Theme.of(context).colorScheme.onPrimary, fontSize: 8.0),
+                                ?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.onPrimary,
+                                    fontSize: 8.0),
                           ),
                         ]
                       ],
@@ -76,11 +83,12 @@ class MusicDetailsScreen extends StatelessWidget {
                       if (recognitionResult.spotify != null)
                         _SpotifyButton(
                           onPressed: () {
-                            final trackUrl = recognitionResult.spotify!.externalUrls?.spotify;
+                            final trackUrl = recognitionResult
+                                .spotify!.externalUrls?.spotify;
                             if (trackUrl != null) {
                               _openInPlayerService.open(trackUrl);
                             } else {
-                              log('Failed to oepn spotify music: url is null');
+                              log('Failed to open spotify music: url is null');
                             }
                           },
                         ),
@@ -116,7 +124,9 @@ class _AlbumCover extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: (url == null ? AssetImage(Assets.images.coverFallback.path) : NetworkImage(url!)) as ImageProvider,
+          image: (url == null
+              ? AssetImage(Assets.images.coverFallback.path)
+              : NetworkImage(url!)) as ImageProvider,
           fit: BoxFit.cover,
         ),
       ),

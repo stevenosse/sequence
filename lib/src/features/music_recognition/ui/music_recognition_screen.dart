@@ -7,6 +7,7 @@ import 'package:sequence/generated/assets.gen.dart';
 import 'package:sequence/src/core/i18n/l10n.dart';
 import 'package:sequence/src/core/routing/app_router.dart';
 import 'package:sequence/src/core/theme/dimens.dart';
+import 'package:sequence/src/features/music_recognition/logic/music_recognizer/local_recognitions/local_recognition.cubit.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_cubit.dart';
 import 'package:sequence/src/features/music_recognition/logic/music_recognizer/music_recognizer_state.dart';
 import 'package:sequence/src/features/music_recognition/logic/sample_recorder/sample_recorder_cubit.dart';
@@ -14,7 +15,8 @@ import 'package:sequence/src/features/music_recognition/logic/sample_recorder/sa
 import 'package:sequence/src/features/music_recognition/ui/widgets/recognition_failed_view.dart';
 import 'package:sequence/src/features/music_recognition/ui/widgets/record_button.dart';
 
-class MusicRecognitionScreen extends StatefulWidget implements AutoRouteWrapper {
+class MusicRecognitionScreen extends StatefulWidget
+    implements AutoRouteWrapper {
   const MusicRecognitionScreen({super.key});
 
   @override
@@ -26,6 +28,7 @@ class MusicRecognitionScreen extends StatefulWidget implements AutoRouteWrapper 
       providers: [
         BlocProvider(create: (_) => SampleRecorderCubit()),
         BlocProvider(create: (_) => MusicRecognizerCubit()),
+        BlocProvider(create: (_) => LocalRecognitionCubit()),
       ],
       child: this,
     );
@@ -49,7 +52,11 @@ class _MusicRecognitionScreenState extends State<MusicRecognitionScreen> {
           state.whenOrNull(
             recognitionSucceeded: (request, response) {
               context.read<SampleRecorderCubit>().reset();
-              context.router.push(MusicDetailsRoute(recognitionResult: response.result!));
+              context
+                  .read<LocalRecognitionCubit>()
+                  .saveRecognition(recognitionResponse: response.result!);
+              context.router
+                  .push(MusicDetailsRoute(recognitionResult: response.result!));
             },
           );
         },
@@ -57,7 +64,9 @@ class _MusicRecognitionScreenState extends State<MusicRecognitionScreen> {
           listener: (context, state) {
             state.whenOrNull(
               recordSuccessful: (filePath) {
-                context.read<MusicRecognizerCubit>().recognize(filePath: filePath);
+                context
+                    .read<MusicRecognizerCubit>()
+                    .recognize(filePath: filePath);
               },
               recordFailed: (exception) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -65,10 +74,8 @@ class _MusicRecognitionScreenState extends State<MusicRecognitionScreen> {
                     backgroundColor: Theme.of(context).colorScheme.error,
                     content: Text(
                       I18n.of(context).musicRecognition_recordFailed,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: Theme.of(context).colorScheme.onError),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.onError),
                     ),
                   ),
                 );
@@ -98,7 +105,9 @@ class _MusicRecognitionScreenState extends State<MusicRecognitionScreen> {
                   Text(
                     I18n.of(context).developerNotice,
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.normal, fontSize: 12.0),
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12.0),
                   ),
                   const SizedBox(height: Dimens.doubleSpace),
                 ],
@@ -122,7 +131,8 @@ class _RecordView extends StatelessWidget {
           recordSuccessful: (filePath) => const SizedBox(),
           orElse: () => AnimatedCrossFade(
             firstChild: RecordButton(
-              onRecordPressed: () => context.read<SampleRecorderCubit>().recordSample(),
+              onRecordPressed: () =>
+                  context.read<SampleRecorderCubit>().recordSample(),
             ),
             secondChild: Lottie.asset(Assets.animations.waves),
             crossFadeState: state.maybeWhen(
@@ -147,7 +157,10 @@ class _RecognitionStatus extends StatelessWidget {
         return state.maybeWhen(
           recognitionLoading: (request) => Text(
             I18n.of(context).musicRecognition_loadingLabel,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall
+                ?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
           ),
           recognitionFailed: (request, reason) {
             return RecognitionFailedView(
