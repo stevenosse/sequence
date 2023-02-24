@@ -11,7 +11,7 @@ import 'package:sequence/src/datasource/models/responses/recognition_response/sp
 part 'spotify_db.g.dart';
 
 @j.JsonSerializable()
-class SpotifyDb extends Equatable {
+class SpotifyEntity extends Equatable {
   final Album? album;
   final ExternalIds? externalIds;
   final int popularity;
@@ -30,7 +30,7 @@ class SpotifyDb extends Equatable {
   final int? trackNumber;
   final String uri;
 
-  const SpotifyDb({
+  const SpotifyEntity({
     this.album,
     this.externalIds,
     required this.popularity,
@@ -71,20 +71,20 @@ class SpotifyDb extends Equatable {
         uri,
       ];
 
-  factory SpotifyDb.fromJson(Map<String, dynamic> json) =>
-      _$SpotifyDbFromJson(json);
+  factory SpotifyEntity.fromJson(Map<String, dynamic> json) =>
+      _$SpotifyEntityFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SpotifyDbToJson(this);
+  Map<String, dynamic> toJson() => _$SpotifyEntityToJson(this);
 }
 
-class SpotifyConverter extends TypeConverter<SpotifyDb, String> {
+class SpotifyConverter extends TypeConverter<SpotifyEntity, String> {
   @override
-  SpotifyDb fromSql(String fromDb) {
-    return SpotifyDb.fromJson(jsonDecode(fromDb) as Map<String, dynamic>);
+  SpotifyEntity fromSql(String fromDb) {
+    return SpotifyEntity.fromJson(jsonDecode(fromDb) as Map<String, dynamic>);
   }
 
   @override
-  String toSql(SpotifyDb value) {
+  String toSql(SpotifyEntity value) {
     return jsonEncode(value.toJson());
   }
 }

@@ -7,10 +7,13 @@ class AppInitializer {
 
   Future<void> run() async {}
 
-  Future<void> postAppRun() async {
-    final db = AppDatabase();
+  Future<void> postAppRun(AppDatabase appDatabase) async {
+    List<RecognitionResultEntity> allRecognitions = [];
 
-    final allRecognitions = await db.select(db.recognitionResultDb).get();
+    appDatabase
+        .select(appDatabase.recognitionResultEntityy)
+        .get()
+        .then((result) => allRecognitions = result);
 
     log('message: $allRecognitions');
   }

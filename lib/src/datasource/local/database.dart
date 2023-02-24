@@ -8,8 +8,8 @@ import 'package:sequence/src/datasource/local/converters/spotify_db.dart';
 
 part 'database.g.dart';
 
-@DataClassName('RecognitionResultD')
-class RecognitionResultDb extends Table {
+@DataClassName('RecognitionResultEntity')
+class RecognitionResultEntityy extends Table {
   TextColumn get artist => text()();
   TextColumn get title => text()();
   TextColumn get album => text()();
@@ -22,7 +22,7 @@ class RecognitionResultDb extends Table {
 }
 
 abstract class RecognitionResultView extends View {
-  RecognitionResultDb get recognitions;
+  RecognitionResultEntityy get recognitions;
 
   @override
   Query as() => select([recognitions.album]).from(recognitions);
@@ -30,7 +30,7 @@ abstract class RecognitionResultView extends View {
 
 @DriftDatabase(
   tables: [
-    RecognitionResultDb,
+    RecognitionResultEntityy,
   ],
   views: [
     RecognitionResultView,

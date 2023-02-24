@@ -10,7 +10,7 @@ import 'package:json_annotation/json_annotation.dart' as j;
 part 'apple_music_db.g.dart';
 
 @j.JsonSerializable()
-class AppleMusicDb extends Equatable {
+class AppleMusicEntity extends Equatable {
   final List<Preview> previews;
   final Artwork? artwork;
   final String artistName;
@@ -26,7 +26,7 @@ class AppleMusicDb extends Equatable {
   final int? trackNumber;
   final String composerName;
 
-  const AppleMusicDb({
+  const AppleMusicEntity({
     required this.artistName,
     required this.url,
     this.discNumber,
@@ -61,20 +61,20 @@ class AppleMusicDb extends Equatable {
         artwork,
       ];
 
-  factory AppleMusicDb.fromJson(Map<String, dynamic> json) =>
-      _$AppleMusicDbFromJson(json);
+  factory AppleMusicEntity.fromJson(Map<String, dynamic> json) =>
+      _$AppleMusicEntityFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AppleMusicDbToJson(this);
+  Map<String, dynamic> toJson() => _$AppleMusicEntityToJson(this);
 }
 
-class AppleMusicConverter extends TypeConverter<AppleMusicDb, String> {
+class AppleMusicConverter extends TypeConverter<AppleMusicEntity, String> {
   @override
-  AppleMusicDb fromSql(String fromDb) {
-    return AppleMusicDb.fromJson(jsonDecode(fromDb) as Map<String, dynamic>);
+  AppleMusicEntity fromSql(String fromDb) {
+    return AppleMusicEntity.fromJson(jsonDecode(fromDb) as Map<String, dynamic>);
   }
 
   @override
-  String toSql(AppleMusicDb value) {
+  String toSql(AppleMusicEntity value) {
     return jsonEncode(value.toJson());
   }
 }

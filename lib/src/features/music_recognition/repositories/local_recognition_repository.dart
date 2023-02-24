@@ -9,8 +9,8 @@ class LocalRecognitionRepository {
 
   Future<String> saveRecognitions(RecognitionResult response) async {
     try {
-      await db.into(db.recognitionResultDb).insert(
-            RecognitionResultDbCompanion.insert(
+      await db.into(db.recognitionResultEntityy).insert(
+            RecognitionResultEntityyCompanion.insert(
               artist: response.artist,
               title: response.title,
               releaseDate: response.releaseDate,
@@ -18,7 +18,7 @@ class LocalRecognitionRepository {
               timeCode: response.timecode,
               songLink: response.songLink,
               album: response.album ?? '',
-              appleMusic: AppleMusicDb(
+              appleMusic: AppleMusicEntity(
                 artistName: response.appleMusic!.artistName,
                 url: response.appleMusic!.url,
                 discNumber: response.appleMusic!.discNumber,
@@ -34,7 +34,7 @@ class LocalRecognitionRepository {
                 previews: response.appleMusic!.previews,
                 artwork: response.appleMusic!.artwork,
               ),
-              spotify: SpotifyDb(
+              spotify: SpotifyEntity(
                 popularity: response.spotify!.popularity,
                 artists: response.spotify!.artists,
                 availableMarkets: response.spotify!.availableMarkets,
